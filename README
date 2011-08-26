@@ -1,0 +1,8 @@
+Universal expert system based on production model. 
+
+One of my yearly university project re-written in pure JS.
+
+
+See in action: www.vanyamikhailov.ru/projects/expSystem
+
+It works only in WebKit and Opera, because Firefox and IE don't support Web SQL API

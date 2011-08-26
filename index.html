@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Expert Systems</title>
+    <link rel="stylesheet" type="text/css" href="style.css" media="all" />
+</head>
+<body onload="expSys.initialize();">
+    
+    <header>
+        <p id="logo"><span class="gray">exp</span> &#x2192; Sys</p>
+        <p id="desc">expert system based on production model</p>
+        <p id="system_name"></p>
+    </header>
+
+    <div id="systems">
+        <select id="system_select" onchange="" size="10">
+            <option value="x">refresh me</option>
+        </select>
+        
+        <div class="container">
+            <div class="left">
+                <button id="add_button" onclick="expSys.addSystem();">+</button>
+                <button id="add_button" onclick="expSys.removeSystem();">-</button>
+            </div>
+            <div class="right">
+                <button id="select_system_button" onclick="expSys.selectSystem();">select</button>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    
+    <ul id="navigation">
+        <li style="text-align:left;"><a id="systems_button" href="javascript:expSys.backToSystemSelection();">&#x2190; back</a></li>
+        <li><a id="questions_button" href="javascript:expSys.showQuestions();">Questions</a></li>
+        <li><a id="rules_button" href="javascript:expSys.showRules();">Rules</a></li>
+        <li><a id="start_button" href="javascript:expSys.startSystem();">Start!</a></li>
+    </ul>
+    
+    <div id="questions">
+        <table id="questions_table">
+        </table>
+        
+        <p align="center" style="font-size:70%;">
+            Add question: <input type="text" name="new_question" id="new_question" value="" />
+            <button onclick="expSys.addQuestion()">save</button>
+        </p>
+        
+    </div>
+    
+    <div id="start">
+        
+        <p id="next_question"></p>
+        <div id="next_question_options"></div>
+        
+        <p align="center" id="next_question_button_wrap"><button onclick="expSys.nextStep();">OK</button></p>
+        
+    </div>
+    
+    
+    <div id="rules">
+        
+        <p style="text-align:center;font-size:85%">current rules:</p>
+        
+        <table id="rules_table">
+        <tr>
+            <td class="rules_table_if head_if" align="center">if</td>
+            <td class="rules_table_arrow" align="center"></td>
+            <td class="rules_table_then head_then" align="center">then</td>
+            <td class="rules_table_delete"></td>
+        </tr>
+        </table>
+        <p align="center"><button onclick="expSys.showNewRuleForm();">add rule</button></p>
+        
+        <div id="new_rule">
+            
+            <div id="new_rule_header">
+                <div class="if" style="width:45%;">
+                    <span class="gray">if</span>
+                </div>
+                <div class="then" style="width:45%;">
+                    then
+                </div>
+                <div class="clear"></div>
+            </div>
+            
+            <div id="new_rule_wrap">
+                <div class="if">
+                    <div class="rule_entry" id="rule_entry_0">
+                        <button class="delete_rule_button" onclick="javascript:expSys.removeRuleCondition(0); return false;" style="visibility:hidden;" />-</button>
+                        <select class="rule_select" id="select_question_0" name="select_question_0">                       </select>
+                        <input name="rule_answer_0" class="rule_answer" id="rule_answer_0" type="text" />
+                            
+                    </div>
+                            
+                    <div id="new_rules_container"></div>
+                    <button id="add_rule_button" onclick="expSys.addRuleCondition();">and</button>
+                </div>
+                <div class="arrow">&#x2192;</div>
+                <div class="then">
+                    <input name="rule_result" id="rule_result" size="30">
+                </div>
+                
+                <p align="center" style="margin-top:10px"><button onclick="expSys.saveRule();">save</button></p>
+            </div>
+            
+        </div>
+    </div>
+    
+</body>
+<script type="text/javascript" src="script.js"></script>
+</html>
